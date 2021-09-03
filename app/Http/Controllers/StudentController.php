@@ -7,20 +7,20 @@ use App\Models\Student;
 
 class StudentController extends Controller
 {
+    
     public function view()
     {
         $datas=Student::get();
-        return view('view', compact('datas'))->withtitle('View All');
-        // if ($datas->count()>0) {
-        //     return view('view', compact('datas'))->withtitle('View All');
-        // }else{
-        //     return redirect('/');
-        // }
+        return view('view', compact('datas'))->withtitle('Students List');
     }
-    public function save()
+
+
+    public function create()
     {
         return view('addform');
     }
+
+
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -36,16 +36,10 @@ class StudentController extends Controller
         $NewStudent->address =$request->address;
         $NewStudent->mail = $request->mail;
         $NewStudent->save();
-        return redirect('/view');
-
-        // $Student = Student::create([
-        //     'name' => 'Claira Curtis',
-        //     'age'=>21,
-        //     'address'=>'785 lauzon parkway, leamington ontario, Canada',
-        //     'mail'=>'imclaira@gmail.com'
-        // ]);
-        // return redirect('view');
+        return redirect('/view'); 
     }
+    
+
     public function update($id)
     {
         $datas=Student::where('id', $id)->get();
@@ -55,6 +49,8 @@ class StudentController extends Controller
             return redirect('/');
         }
     }
+
+
     public function updateStore(Request $request, $id)
     {
         $validated = $request->validate([
@@ -68,6 +64,8 @@ class StudentController extends Controller
 
         return redirect('view');
     }
+
+
     public function destroy($id)
     {
         $deldata = Student::find($id);
@@ -75,6 +73,8 @@ class StudentController extends Controller
             $deldata->delete();
             return redirect('view');
         }
-        return ("id is wrong");
+        return ("<h1>Student Identification Does not match</h1>");
     }
+
+
 }
