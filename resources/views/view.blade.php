@@ -44,9 +44,10 @@
         }
 
         .student-box {
-            border: 1px solid silver;
             padding: 20px;
             display: grid;
+            border-radius: 2px;
+            box-shadow: rgb(50 50 93 / 25%) 0px 2px 5px -1px, rgb(0 0 0 / 30%) 0px 1px 3px -1px;
         }
 
         .student-box div {

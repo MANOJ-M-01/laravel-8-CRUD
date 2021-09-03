@@ -40,6 +40,12 @@
             justify-content: center;
             min-height: 100vh;
         }
+        .students-container{
+            box-shadow: rgb(50 50 93 / 25%) 0px 2px 5px -1px, rgb(0 0 0 / 30%) 0px 1px 3px -1px;
+    padding: 20px 40px;
+    border-radius: 3px;
+    margin-top: -120px;
+        }
 
         .in-box {
             color: black;
@@ -120,6 +126,7 @@
 <body>
     <a class="link" href="{{ route('Read') }}">View Students</a>
     <div class="container">
+        <div class="students-container">
         <form action="/add" method="POST">
             @csrf
             <h1>Add New Student Details</h1>
@@ -132,6 +139,7 @@
 
         </form>
 
+    </div>
         @if ($errors->any())
             <div class="alert alert-danger">
                 <h1>Form Error</h1>
@@ -143,7 +151,6 @@
                 </ul>
             </div>
         @endif
-
     </div>
 </body>
 
